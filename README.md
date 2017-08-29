@@ -1,6 +1,6 @@
 # JavaScript Metronome
 
-A simple metronome web app written in JavasScript and jQuery. It uses the [Howler.js](https://howlerjs.com/) as a wrapper for the WebAudio API. This library will also fall back to HTML5 audio if WebAudio isn't available.
+A simple metronome web app written in JavasScript and jQuery. It uses the [Howler.js](https://howlerjs.com/) library as a wrapper for the WebAudio API. This library will also fall back to HTML5 audio if WebAudio isn't available.
 
 # Controls
 There are 3 controls for the metronome:
