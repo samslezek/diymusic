@@ -12,12 +12,17 @@ body {
     padding-top: 5px;
 }
 
-#playStopButton {
-    width: 55px;
-    height: 55px;
+.btn-round {
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
 }
 
+.fa {
+    font-size: 32px;
+}
+
+/*
 .fa-play-circle-o {
     font-size: 70px;
     color: #33b5e5;
@@ -36,4 +41,4 @@ body {
 
 .fa-stop-circle-o:hover {
     color: #CC0000;
-}
+}*/

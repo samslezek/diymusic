@@ -1,7 +1,9 @@
 $(document).ready(function () {
     // Set up
-    const playButtonClass = "fa fa-play-circle-o"; // This is the play button class name from Font Awesome
-    const stopButtonClass = "fa fa-stop-circle-o"; // This is the stop button class name from Font Awesome
+    const playButtonClass = "btn btn-primary btn-round fa"; // This is the play button class name from Font Awesome
+    const stopButtonClass = "btn btn-danger btn-round fa"; // This is the stop button class name from Font Awesome
+    const playIcon = "&#xf04b;"; // unicode for the Font Awesome play icon
+    const stopIcon = "&#xf04d;"; // unicode for the Font Awesome stop icon
     const tempoMin = 1;
     const tempoMax = 400;
     const bpbMin = 1;
@@ -19,6 +21,8 @@ $(document).ready(function () {
     $("#tempo-text-box").val(tempo);
     $("#bpb-text-box").val(beatsPerBar);
     $("#cpb-text-box").val(clicksPerBeat);
+
+    const playStopButton = $("#playStopButton");
 
 
     // Create the sound effects
@@ -84,15 +88,18 @@ $(document).ready(function () {
     });
 
     // Function to handle starting and stopping the metronome
-    $("#playStopButton").click(function () {
+    playStopButton.click(function () {
         isPlaying = !isPlaying;
         if (isPlaying) {
             playClick();
-            $("#playStopButton").attr("class", stopButtonClass); // change the button to the stop class
+            playStopButton.html(stopIcon);
+            playStopButton.attr("class", stopButtonClass);
             interval = setInterval(playClick, (60000 / tempo) / clicksPerBeat);
         } else {
             clearInterval(interval); // this stops the sound effects from playing
-            $("#playStopButton").attr("class", playButtonClass); // change the button to the play class
+            //btnIcon.attr("class", playButtonClass); // change the button to the play class
+            playStopButton.html(playIcon);
+            playStopButton.attr("class", playButtonClass);
             beat = 1; // reset the beat to the down beat
         }
     });

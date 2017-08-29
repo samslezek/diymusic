@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
-    <script src="js/scripts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+  <script src="js/scripts.js"></script>
 
-    <title>Metronome</title>
+  <title>Metronome</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1 class="display-4 text-center mb-3">Metronome</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="display-4 text-center mb-3">Metronome</h1>
 
-                <form>
-                    <div class="form-group">
-                        <label for="tempo-text-box">Tempo</label>
-                        <input type="number" class="form-control" id="tempo-text-box"
-                               min="0" max="400" step="5" value="60">
-                        <!-- Min here is set to 0 only to make stepping through
-                             neater. Setting min to 1 makes the numbers 1, 6, 11, 16, ...
-                             A minimum of 1 bpm is enforced in the scripts.js file
-                             -->
-                    </div>
-
-                    <div class="form-group">
-                        <label for="bpb-text-box">Beats per bar</label>
-                        <input type="number" class="form-control" id="bpb-text-box"
-                               min="1" max="16" value="1">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cpb-text-box">Clicks per beat</label>
-                        <input type="number" class="form-control" id="cpb-text-box"
-                               min="1" max="16" value="1">
-                    </div>
-                </form>
-
-                <div id="btnContainer" class="text-center">
-                    <i class="fa fa-play-circle-o" id="playStopButton"></i>
-                </div>
-            </div>
+      <form>
+        <div class="form-group">
+          <label for="tempo-text-box">Tempo</label>
+          <input type="number" class="form-control" id="tempo-text-box"
+                 min="0" max="400" step="5" value="60">
+          <!-- Min here is set to 0 only to make stepping through
+               neater. Setting min to 1 makes the numbers 1, 6, 11, 16, ...
+               A minimum of 1 bpm is enforced in the scripts.js file
+               -->
         </div>
+
+        <div class="form-group">
+          <label for="bpb-text-box">Beats per bar</label>
+          <input type="number" class="form-control" id="bpb-text-box"
+                 min="1" max="16" value="1">
+        </div>
+
+        <div class="form-group">
+          <label for="cpb-text-box">Clicks per beat</label>
+          <input type="number" class="form-control" id="cpb-text-box"
+                 min="1" max="16" value="1">
+        </div>
+      </form>
+
+      <div class="container text-center">
+        <button class="btn btn-primary btn-round fa" id="playStopButton">
+          &#xf04b;
+        </button>
+      </div>
     </div>
+  </div>
+</div>
 </body>
 </html>
