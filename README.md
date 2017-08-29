@@ -8,6 +8,9 @@ There are 3 controls for the metronome:
 **Beats per bar:** How many times you want it to click per measure. (1 - 16)  
 **Clicks per beat:** How many times you want it to click each beat. For example, if you wanted an 8th note subdivision, setting this value to 2 would accomplish that. (1 - 16)  
 
+# Live Demo
+A live demo of this project can be found [here](http://adamshillmusic.com/metronome/)
+
 # Feedback
 Feel free to submit issues, pull requests, or forks.
 
