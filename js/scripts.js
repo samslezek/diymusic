@@ -177,9 +177,11 @@ $(document).ready(function () {
         if ((beat%16 == thirdbeat)){
             la3Sound.play();
         }
-        // if (beat%16 == 0 && thirdbeat == 16){
-        //     la3Sound.play();
-        // }
+        if (beat%16 == 0){
+            if (thirdbeat == 16){
+                la3Sound.play();
+            }
+        }
         beat++;
     }
 });
