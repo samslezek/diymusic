@@ -13,13 +13,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
   <script src="js/scripts.js"></script>
 
-  <title>Metronome</title>
+  <title>Set the Melody</title>
 </head>
 <body>
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h1 class="display-4 text-center mb-3">Metronome</h1>
+      <h1 class="display-4 text-center mb-3">Set the Melody</h1>
 
       <form>
         <div class="form-group">
@@ -33,16 +33,28 @@
         </div>
 
         <div class="form-group">
-          <label for="bpb-text-box">Beats per bar</label>
-          <input type="number" class="form-control" id="bpb-text-box"
-                 min="1" max="16" value="1">
+          <label for="firstbeat-text-box">First Beat</label>
+          <input type="number" class="form-control" id="firstbeat-text-box"
+                 min="1" max="16" value="5">
         </div>
 
         <div class="form-group">
+          <label for="secondbeat-text-box">Second Beat</label>
+          <input type="number" class="form-control" id="secondbeat-text-box"
+                 min="1" max="16" value="9">
+        </div>
+
+        <div class="form-group">
+          <label for="thirdbeat-text-box">Third Beat</label>
+          <input type="number" class="form-control" id="thirdbeat-text-box"
+                 min="1" max="16" value="13">
+        </div>
+
+<!--         <div class="form-group">
           <label for="cpb-text-box">Clicks per beat</label>
           <input type="number" class="form-control" id="cpb-text-box"
                  min="1" max="16" value="1">
-        </div>
+        </div> -->
       </form>
 
       <div class="container text-center">

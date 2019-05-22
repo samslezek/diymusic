@@ -11,16 +11,21 @@ $(document).ready(function () {
     const cpbMin = bpbMin;
     const cpbMax = bpbMax;
     let beat = 1; // the current beat in the bar
-    let beatsPerBar = 4;
+    let beatsPerBar = 16;
     let clicksPerBeat = 1;
     let tempo = 60; // in beats per minute
     let isPlaying = false;
     let interval; // used to hold the setInterval data so it can be cleared when the metronome stops
+    let firstbeat = 5;
+    let secondbeat = 9;
+    let thirdbeat = 13;
 
     // Initialize the values in the views on the page
     $("#tempo-text-box").val(tempo);
     $("#bpb-text-box").val(beatsPerBar);
     $("#cpb-text-box").val(clicksPerBeat);
+
+    tempo=tempo
 
     const playStopButton = $("#playStopButton");
 
@@ -31,19 +36,22 @@ $(document).ready(function () {
         src: ["./sounds/High-Wood-Block.mp3"]
     });
 
-    let lowBlockSound = new Howl({
-        src: ["./sounds/Low-Wood-Block.mp3"]
+    let re1Sound = new Howl({
+        src: ["./sounds/re1.wav"]
     });
 
-    let subdivisionLowBlockSound = new Howl({
-        src: ["./sounds/N1R-Low-Wood-Block.mp3"]
+    let mi2Sound = new Howl({
+        src: ["./sounds/mi2.wav"]
+    });
+
+    let la3Sound = new Howl({
+        src: ["./sounds/la3.wav"]
     });
 
     // Input validation for the tempo text box
     // Makes sure that the value is between tempoMin and tempoMax
     $("#tempo-text-box").on("input", function () {
         let newTempo = $(this).val();
-
         if (newTempo > tempoMax) {
             newTempo = tempoMax;
             $(this).val(newTempo);
@@ -54,6 +62,52 @@ $(document).ready(function () {
 
        tempo = newTempo;
     });
+
+
+    // Input validation for the tempo text box
+    // Makes sure that the value is between tempoMin and tempoMax
+    $("#firstbeat-text-box").on("input", function () {
+        console.log('now changing firstbeat')
+        let newfirstbeat = $(this).val();
+        if (newfirstbeat > 16) {
+            newfirstbeat = 16;
+            $(this).val(newfirstbeat);
+        } else if (newfirstbeat < 1) {
+            newfirstbeat = 1;
+            $(this).val(newfirstbeat);
+        }
+        firstbeat = newfirstbeat;
+        console.log('firstbeat is now ' + firstbeat)
+    });
+
+    $("#secondbeat-text-box").on("input", function () {
+        console.log('now changing secondbeat')
+        let newfirstbeat = $(this).val();
+        if (newfirstbeat > 16) {
+            newfirstbeat = 16;
+            $(this).val(newfirstbeat);
+        } else if (newfirstbeat < 1) {
+            newfirstbeat = 1;
+            $(this).val(newfirstbeat);
+        }
+        secondbeat = newfirstbeat;
+        console.log('secondbeat is now ' + secondbeat)
+    });
+
+    $("#thirdbeat-text-box").on("input", function () {
+        console.log('now changing thirdbeat')
+        let newfirstbeat = $(this).val();
+        if (newfirstbeat > 16) {
+            newfirstbeat = 16;
+            $(this).val(newfirstbeat);
+        } else if (newfirstbeat < 1) {
+            newfirstbeat = 1;
+            $(this).val(newfirstbeat);
+        }
+        thirdbeat = newfirstbeat;
+        console.log('secondbeat is now ' + thirdbeat)
+    });
+
 
     // Input validation for the beats per bar text box
     // Makes sure that the value is between bpbMin and bpbMax
@@ -91,10 +145,11 @@ $(document).ready(function () {
     playStopButton.click(function () {
         isPlaying = !isPlaying;
         if (isPlaying) {
+            console.log('here first beat is ' + firstbeat)
             playClick();
             playStopButton.html(stopIcon);
             playStopButton.attr("class", stopButtonClass);
-            interval = setInterval(playClick, (60000 / tempo) / clicksPerBeat);
+            interval = setInterval(playClick, (60000 / (tempo*5)) / clicksPerBeat);
         } else {
             clearInterval(interval); // this stops the sound effects from playing
             //btnIcon.attr("class", playButtonClass); // change the button to the play class
@@ -110,12 +165,20 @@ $(document).ready(function () {
         if ((beat % (beatsPerBar * clicksPerBeat)) === 1) {
             // We're on the down beat of the bar
             highBlockSound.play();
-        } else if (((beat % clicksPerBeat) === 1) || (clicksPerBeat === 1)) {
+        }
+        if ((beat % 16 == firstbeat)) {
             // We're on a strong beat (aside from the down beat)
-            lowBlockSound.play();
-        } else {
-            // We're on a subdivision of the beat
-            subdivisionLowBlockSound.play();
+            console.log('firstbeat is ' + firstbeat)
+            re1Sound.play();
+        } 
+        if ((beat%16 == secondbeat)){
+            mi2Sound.play();
+        }
+        if ((beat%16 == thirdbeat)){
+            la3Sound.play();
+        }
+        if (beat%16 && thirdbeat == 16){
+            la3Sound.play();
         }
         beat++;
     }
