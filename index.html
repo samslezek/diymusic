@@ -7,62 +7,67 @@
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+  	.selected {font-weight: bold}
+  </style>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
   <script src="js/scripts.js"></script>
 
-  <title>Set the Melody</title>
+  <title>DIY Music</title>
 </head>
 <body>
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h1 class="display-4 text-center mb-3">Set the Melody</h1>
+      <h1 class="display-4 text-center mb-3">Create Your Music</h1>
 
       <form>
-        <div class="form-group">
-          <label for="tempo-text-box">Tempo</label>
-          <input type="number" class="form-control" id="tempo-text-box"
-                 min="0" max="400" step="5" value="60">
-          <!-- Min here is set to 0 only to make stepping through
-               neater. Setting min to 1 makes the numbers 1, 6, 11, 16, ...
-               A minimum of 1 bpm is enforced in the scripts.js file
-               -->
+
+      	<h4 style="padding-bottom:5px; padding-top:8px">Tempo</h4>
+        <div class="row">
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="selected tempo-select" style="border:2px solid #666;padding-top:5px;padding-bottom: 5px;" id="tempo1">Slow <br>&#x1f422;</div>
+        	</div>
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="tempo-select" style="border:2px solid #666; padding-top: 5px; padding-bottom: 5px;" id="tempo2">Medium <br> 	&#x1F415;</div>
+        	</div>
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="tempo-select" style="border:2px solid #666; padding-top: 5px; padding-bottom: 5px;" id="tempo3">Fast <br>&#x1f407; </div>
+        	</div>
         </div>
 
-        <div class="form-group">
-          <label for="firstbeat-text-box">First Beat</label>
-          <input type="number" class="form-control" id="firstbeat-text-box"
-                 min="1" max="16" value="5">
+        <h4 style="padding-bottom:5px; padding-top:8px">Melody</h4>
+        <div class="row">
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="selected melody-select" style="border:2px solid blue;padding-top:5px;padding-bottom: 5px;  background: lightblue" id="melody1">Melody 1 <br>&#x1F3B6;</div>
+        	</div>
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="melody-select" style="border:2px solid green; padding-top: 5px; padding-bottom: 5px;  background: lightgreen" id="melody2">Melody 2 <br>&#x1F3B5;</div>
+        	</div>
+        	<div class="col-md-4" style="padding:3px; text-align: center">
+        		<div class="melody-select" style="border:2px solid yellow; padding-top: 5px; padding-bottom: 5px;  background: lightyellow" id="melody3">Melody 3 <br>&#x1F3BC; </div>
+        	</div>
         </div>
 
-        <div class="form-group">
-          <label for="secondbeat-text-box">Second Beat</label>
-          <input type="number" class="form-control" id="secondbeat-text-box"
-                 min="1" max="16" value="9">
+        <h4 style="padding-bottom:5px; padding-top:8px">Test Rhythm</h4>
+        <div class="row">
+        	<div class="col-md-6" style="padding:3px; text-align: center">
+        		<div class="selected rhythm-select" style="border:2px solid #666;padding-top:5px;padding-bottom: 5px" id="rhythm1">Rhythm 1 <br>&#x1F39B;</div>
+        	</div>
+        	<div class="col-md-6" style="padding:3px; text-align: center">
+        		<div class="rhythm-select" style="border:2px solid #666; padding-top: 5px; padding-bottom: 5px" id="rhythm2">Rhythm 2 <br>&#x1F941;</div>
+        	</div>
         </div>
-
-        <div class="form-group">
-          <label for="thirdbeat-text-box">Third Beat</label>
-          <input type="number" class="form-control" id="thirdbeat-text-box"
-                 min="1" max="16" value="13">
-        </div>
-
-<!--         <div class="form-group">
-          <label for="cpb-text-box">Clicks per beat</label>
-          <input type="number" class="form-control" id="cpb-text-box"
-                 min="1" max="16" value="1">
-        </div> -->
       </form>
 
-      <div class="container text-center">
+      <div class="container text-center" style="padding-top:30px">
         <button class="btn btn-primary btn-round fa" id="playStopButton">
           &#xf04b;
         </button>
       </div>
-    </div>
   </div>
 </div>
 </body>
