@@ -20,39 +20,96 @@ $(document).ready(function () {
     // Howler.js was used to enable overlapping sound effects
     let highBlockSound = new Howl({
         src: ["./sounds/High-Wood-Block.mp3"],
-        volume: 0.2
+        volume: 1
     });
 
     let highBlockSoundQuiet = new Howl({
        src: ["./sounds/High-Wood-Block.mp3"],
-       volume: 0.05
+       volume: 0.3
     })
 
-    let lowBlockSound = new Howl({
-        src: ["./sounds/Low-Wood-Block.mp3"],
-        volume: 0.2
+    // let lowBlockSound = new Howl({
+    //     src: ["./sounds/Low-Wood-Block.mp3"],
+    //     volume: 0.2
+    // });
+
+    // let lowBlockSoundQuiet = new Howl({
+    //    src: ["./sounds/Low-Wood-Block.mp3"],
+    //    volume: 0.05
+    // })
+
+    // let re1Sound = new Howl({
+    //     src: ["./sounds/re1.wav"]
+    // });
+
+    // let mi2Sound = new Howl({
+    //     src: ["./sounds/mi2.wav"]
+    // });
+
+    // let la3Sound = new Howl({
+    //     src: ["./sounds/la3.wav"]
+    // });
+
+    let melody60one = new Howl({
+        src: ["./sounds/Amin 60.wav"]
     });
 
-    let lowBlockSoundQuiet = new Howl({
-       src: ["./sounds/Low-Wood-Block.mp3"],
-       volume: 0.05
+    let melody60three = new Howl({
+        src: ["./sounds/Cmaj 60.wav"]
+    });
+
+    let melody85one = new Howl({
+        src: ["./sounds/Amin 85.wav"]
     })
 
-    let re1Sound = new Howl({
-        src: ["./sounds/re1.wav"]
-    });
+    let melody85two = new Howl({
+        src: ["./sounds/Amin2 85.wav"]
+    })
 
-    let mi2Sound = new Howl({
-        src: ["./sounds/mi2.wav"]
-    });
+    let melody85three = new Howl({
+        src: ["./sounds/Cmaj 85.wav"]
+    })
 
-    let la3Sound = new Howl({
-        src: ["./sounds/la3.wav"]
-    });
+    let melody110one = new Howl({
+        src: ["./sounds/Amin 110.wav"]
+    })
 
-    let sound = re1Sound;
-    let rhythmLoud = highBlockSound;
-    let rhythmQuiet = highBlockSoundQuiet;
+    let melody110two = new Howl({
+        src: ["./sounds/Amin2 110.wav"]
+    })
+
+    let melody110three = new Howl({
+        src: ["./sounds/Cmaj 110.wav"]
+    })
+
+    let rhythm60one = new Howl({
+        src: ["./sounds/Rhythm1 60.wav"]
+    })
+
+    let rhythm60two = new Howl({
+        src: ["./sounds/Rhythm2 60.wav"]
+    })
+
+    let rhythm85one = new Howl({
+        src: ["./sounds/Rhythm1 85.wav"]
+    })
+
+    let rhythm85two = new Howl({
+        src: ["./sounds/Rhythm2 85.wav"]
+    })
+
+    let rhythm110one = new Howl({
+        src: ["./sounds/Rhythm1 110.wav"]
+    })
+
+    let rhythm110two = new Howl({
+        src: ["./sounds/Rhythm2 110.wav"]
+    })
+
+
+    // let sound = re1Sound;
+    let metroLoud = highBlockSound;
+    let metroQuiet = highBlockSoundQuiet;
 
     $('.tempo-select').click( function(){ 
         let myTempo = 60;
@@ -146,35 +203,98 @@ $(document).ready(function () {
     // This function handles playing the click sound
     // Each time playClick() is called, the beat variable is incremented so we know what beat we're on
     function playClick() {
-        if (rhythm==1){
-            rhythmLoud=highBlockSound;
-            rhythmQuiet=highBlockSoundQuiet;
-        } else if (rhythm==2){
-            rhythmLoud=lowBlockSound;
-            rhythmQuiet=lowBlockSoundQuiet;
-        }
+        // play metronome
         if ((beat % (16)) == 1) {
             // We're on the down beat of the bar
-            rhythmLoud.play();
+            metroLoud.play();
         } else if ((beat % (4)) == 1){
-            rhythmQuiet.play();
+            metroQuiet.play();
         }
-        if (melody==1){
-            sound=re1Sound
-        } else if (melody==2){
-            sound=mi2Sound
-        } else if (melody==3){
-            sound=la3Sound
+        // play melody
+        if (tempo==60 && melody==1){
+            if ((beat % (32)) == 1){
+                melody60one.play()
+            }
+        } else if (tempo == 60 && melody ==2){
+            if ((beat % (32)) == 1){
+                melody60one.play()
+            }
+        } else if (tempo == 60 && melody == 3){
+            if ((beat % (128)) == 1){
+                melody60three.play()
+            }
+        } else if (tempo == 85 && melody == 1){
+            if ((beat % (64)) == 1){
+                melody85one.play()
+            }
+        } else if (tempo == 85 && melody == 2){
+            if ((beat % (64)) == 1){
+                melody85two.play()
+            }
+        } else if (tempo == 85 && melody == 3){
+            if ((beat % (128)) == 1){
+                melody85three.play()
+            }
+        } else if (tempo == 110 && melody == 1){
+            if ((beat % (64)) == 1){
+                melody110one.play()
+            }
+        } else if (tempo == 110 && melody == 2){
+            if ((beat % (64)) == 1){
+                melody110two.play()
+            }
+        } else if (tempo == 110 && melody == 3){
+            if ((beat % (128)) == 1){
+                melody110three.play()
+            }
+        } else {
+            alert("we are in else")
         }
-        if ((beat % (16)) == 1){
-            sound.play()
+        
+        // play rhythm
+        if (tempo == 60 && rhythm == 1){
+            if ((beat % (32)) == 1){
+                rhythm60one.play()
+            }
+        } else if (tempo == 60 && rhythm == 2){
+            if ((beat % (64)) == 1){
+                rhythm60two.play()
+            }
+        } else if (tempo == 85 && rhythm == 1){
+            if ((beat % (64)) == 1){
+                rhythm85one.play()
+            }            
+        } else if (tempo == 85 && rhythm == 2){
+            if ((beat % (64)) == 1){
+                rhythm85two.play()
+            }            
+        } else if (tempo == 110 && rhythm == 1){
+            if ((beat % (64)) == 1){
+                rhythm110one.play()
+            }      
+        } else if (tempo == 110 && rhythm == 2){
+            if ((beat % (64)) == 1){
+                rhythm110two.play()
+            }                  
         }
-        if ((beat % (16)) == 4){
-            sound.play()
-        }
-        if ((beat % (16)) == 7){
-            sound.play()
-        }
+
+
+        // if (melody==1){
+        //     sound=re1Sound
+        // } else if (melody==2){
+        //     sound=mi2Sound
+        // } else if (melody==3){
+        //     sound=la3Sound
+        // }
+        // if ((beat % (16)) == 1){
+        //     sound.play()
+        // }
+        // if ((beat % (16)) == 4){
+        //     sound.play()
+        // }
+        // if ((beat % (16)) == 7){
+        //     sound.play()
+        // }
         beat++;
     }
 });
